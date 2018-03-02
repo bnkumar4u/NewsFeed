@@ -68,7 +68,7 @@ public final class QueryUtils
                 String webUrl=currentNews.getString("url");
                 String imgUrl=currentNews.getString("urlToImage");
 
-                Bitmap bitmap=downloadBitmap(imgUrl);
+                Bitmap bitmap=null;//downloadBitmap(imgUrl);
 
                 news.add(new NewsData(webTitle,webUrl,bitmap));
             }
@@ -95,8 +95,8 @@ public final class QueryUtils
 
         try{
             urlConnection=(HttpURLConnection) url.openConnection();
-            urlConnection.setReadTimeout(1000000);
-            urlConnection.setConnectTimeout(1500000);
+            urlConnection.setReadTimeout(120000);
+            urlConnection.setConnectTimeout(150000);
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
 

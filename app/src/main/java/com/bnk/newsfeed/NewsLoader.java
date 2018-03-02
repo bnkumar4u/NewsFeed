@@ -1,15 +1,17 @@
 package com.bnk.newsfeed;
 
 
-import android.content.AsyncTaskLoader;
 import android.content.Context;
+import android.support.v4.content.AsyncTaskLoader;
 
 import java.util.ArrayList;
 
-public class NewsLoader extends AsyncTaskLoader<ArrayList<NewsData>>{
+//import android.content.Context;
+
+public class NewsLoader extends AsyncTaskLoader<ArrayList<NewsData>> {
 
     private String mUrl;
-    public NewsLoader(Context context,String url) {
+    public NewsLoader(Context context, String url) {
         super(context);
         mUrl=url;
     }

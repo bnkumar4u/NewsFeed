@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,11 +9,20 @@
     tools:context="com.bnk.newsfeed.MainActivity"
     android:padding="4dp">
 
-  <ListView
-      android:id="@+id/list_view"
+  <android.support.design.widget.TabLayout
       android:layout_width="match_parent"
-      android:layout_height="match_parent">
+      android:layout_height="wrap_content"
+      android:id="@+id/tab_layout"
+      app:tabTextColor="@color/colorPrimary"
+      app:tabSelectedTextColor="@color/black"
+      android:padding="4dp"
+      app:tabIndicatorColor="#464545"
+      app:tabMode="scrollable"/>
+  <android.support.v4.view.ViewPager
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1"
+      android:id="@+id/view_pager"/>
 
-  </ListView>
 
 </LinearLayout>
