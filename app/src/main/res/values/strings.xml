@@ -4,4 +4,17 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="naresh_kumar">Naresh Kumar</string>
+    <string name="email">naresh@bnk.com</string>
+    <string name="news">News</string>
+    <string name="category">Category</string>
+    <string name="about_app">About App</string>
+    <string name="more_options">More Options</string>
+    <string name="help">Help</string>
+    <string name="open_drawer">Open Drawer</string>
+    <string name="close_drawer">Close Drawer</string>
+    <string name="about_app_info">Developed by Naresh Kumar\n
+    It is a news App.</string>
+    <string name="help_info">Contact bnk.com</string>
+    <string name="category_info">Headlines \nBusiness  \nEntertainment \nGeneral  \nHealth  \nScience  \nSports  \nTechnology</string>
 </resources>

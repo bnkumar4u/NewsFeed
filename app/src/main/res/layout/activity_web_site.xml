@@ -6,7 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.bnk.newsfeed.WebSiteActivity">
-
+    <include layout="@layout/custom_tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <ProgressBar
         android:id="@+id/progree"

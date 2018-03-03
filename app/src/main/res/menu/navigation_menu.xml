@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:checkableBehavior="single">
+        <item android:title="@string/news"
+            android:id="@+id/news_item"
+            android:icon="@drawable/foldednewspaper"/>
+        <item android:title="@string/category"
+            android:id="@+id/category_item"
+            android:icon="@drawable/ic_dashboard_black_24dp"/>
+    </group>
+    <item
+        android:title="@string/more_options">
+        <menu>
+            <item
+                android:title="@string/about_app"
+                android:id="@+id/about_app_item"
+                android:icon="@drawable/ic_info_black_24dp"/>
+            <item
+                android:title="@string/help"
+                android:id="@+id/help_item"
+                android:icon="@drawable/ic_help_black_24dp"/>
+        </menu>
+    </item>
+
+
+</menu>

@@ -12,19 +12,25 @@
         android:roundIcon="@mipmap/news_app_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBAr">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"
-                    />
+                <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".WebSiteActivity"
+        <activity
+            android:name=".WebSiteActivity"
             android:label="bnk News"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".AboutHelpActivity"
+            android:parentActivityName=".MainActivity"
+            />
+        <activity android:name=".SearchQueryActivity"
+            android:parentActivityName=".MainActivity"/>
 
-        </activity>
     </application>
 
 </manifest>

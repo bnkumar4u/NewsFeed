@@ -23,7 +23,7 @@ public class HeadlinesFragment extends Fragment implements LoaderManager.LoaderC
     private ProgressBar pb;
 
     private Context mContext;
-    private static final String REQUEST_URL="https://newsapi.org/v2/top-headlines?country=in&apiKey=4da647159ad049a0b1d45a4a25b5c346";
+    public static  final String H_REQUEST_URL="https://newsapi.org/v2/top-headlines?country=in&apiKey=4da647159ad049a0b1d45a4a25b5c346";
     private static  int NEWS_lOADER_ID=0;
     ListView mListView;
     NewsAdapter adapter;
@@ -33,7 +33,6 @@ public class HeadlinesFragment extends Fragment implements LoaderManager.LoaderC
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_headlines, container, false);
         mContext=view.getContext();
-
         pb=view.findViewById(R.id.progress_headlines);
 
         adapter=new NewsAdapter(view.getContext(),new ArrayList<NewsData>());
@@ -73,7 +72,7 @@ public class HeadlinesFragment extends Fragment implements LoaderManager.LoaderC
     @Override
     public Loader<ArrayList<NewsData>> onCreateLoader(int id, Bundle args) {
         pb.setVisibility(View.VISIBLE);
-        return new NewsLoader(mContext,REQUEST_URL.trim());
+        return new NewsLoader(mContext,H_REQUEST_URL.trim());
     }
 
     @Override
