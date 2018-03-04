@@ -37,9 +37,11 @@ public class NewsAdapter extends ArrayAdapter{
 
         ImageView imageView=listItemView.findViewById(R.id.image) ;
 
+        assert currentNews != null;
         String imgurl=currentNews.getImgUrl();
-        if (Glide.with(context).load(imgurl).into(imageView)==null)
-            imageView.setImageResource(R.mipmap.news_app_logo);
+        Glide.with(context).load(imgurl).into(imageView);
+        if(imageView.getDrawable()==null)
+            imageView.setImageResource(R.drawable.placeholder);
 
         TextView hl,date;
 

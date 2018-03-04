@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -29,12 +31,12 @@ public class SearchQueryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_query);
 
-        Toolbar toolbar=(Toolbar)findViewById(R.id.tool_bar);
+        Toolbar toolbar=findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-
+        TextView tv_no_internet=findViewById(R.id.no_internet);
         mListView=findViewById(R.id.query_listview);
         adapter=new NewsAdapter(this,new ArrayList<NewsData>());
         pb=findViewById(R.id.query_progress);
@@ -53,7 +55,10 @@ public class SearchQueryActivity extends AppCompatActivity {
 
         query=getIntent().getExtras().getString("query").trim();
 
-        REQUEST_URL="https://newsapi.org/v2/everything?q="+query+"&apiKey=4da647159ad049a0b1d45a4a25b5c346";
+        String REQUEST_URL_START="https://newsapi.org/v2/everything?";
+        String uri=Uri.parse(REQUEST_URL_START).buildUpon()
+                .appendQueryParameter("q",query)
+                .appendQueryParameter("apiKey","4da647159ad049a0b1d45a4a25b5c346").toString();
 
         ConnectivityManager connMgr=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         //get details on currently active default data network
@@ -62,8 +67,8 @@ public class SearchQueryActivity extends AppCompatActivity {
         if(networkInfo!=null&&networkInfo.isConnected())
         {
             NewsAyncTask newsAyncTask=new NewsAyncTask();
-            newsAyncTask.execute(REQUEST_URL);
-        }
+            newsAyncTask.execute(uri);
+        }else tv_no_internet.setVisibility(View.VISIBLE);
 
     }
 

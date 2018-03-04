@@ -14,13 +14,14 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 
 public class BusinessFragment extends Fragment implements LoaderManager.LoaderCallbacks<ArrayList<NewsData>>{
 
-
+    private TextView tv_no_internet;
     private ProgressBar pb;
     private Context mContext;
     private static final String REQUEST_URL="https://newsapi.org/v2/top-headlines?country=in&apiKey=4da647159ad049a0b1d45a4a25b5c346&category=business";
@@ -35,7 +36,7 @@ public class BusinessFragment extends Fragment implements LoaderManager.LoaderCa
         mContext=view.getContext();
         pb=view.findViewById(R.id.progress_business);
 
-
+        tv_no_internet=view.findViewById(R.id.no_internet);
         adapter=new NewsAdapter(view.getContext(),new ArrayList<NewsData>());
         mListView=(ListView)view.findViewById(R.id.business_listview);
         mListView.setAdapter(adapter);
@@ -63,6 +64,9 @@ public class BusinessFragment extends Fragment implements LoaderManager.LoaderCa
             // the bundle. Pass in this activity for the LoaderCallbacks parameter (which is valid
             // because this activity implements the LoaderCallbacks interface).
             loaderManager.initLoader(NEWS_lOADER_ID, null, this);
+        }
+        else{
+            tv_no_internet.setVisibility(View.VISIBLE);
         }
 
         return view;

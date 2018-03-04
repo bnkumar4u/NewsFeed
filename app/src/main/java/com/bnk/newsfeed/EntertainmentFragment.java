@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -34,7 +35,7 @@ public class EntertainmentFragment extends Fragment implements LoaderManager.Loa
         View view = inflater.inflate(R.layout.fragment_entertainment, container, false);
         mContext=view.getContext();
         pb=view.findViewById(R.id.progress_entertainment);
-
+        TextView tv_no_internet=view.findViewById(R.id.no_internet);
 
         adapter=new NewsAdapter(view.getContext(),new ArrayList<NewsData>());
         mListView=view.findViewById(R.id.entertainment_listview);
@@ -63,7 +64,8 @@ public class EntertainmentFragment extends Fragment implements LoaderManager.Loa
             // the bundle. Pass in this activity for the LoaderCallbacks parameter (which is valid
             // because this activity implements the LoaderCallbacks interface).
             loaderManager.initLoader(NEWS_lOADER_ID, null, this);
-        }
+        }else
+            tv_no_internet.setVisibility(View.VISIBLE);
 
         return view;
     }
