@@ -7,21 +7,40 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools">
-    <TextView
-        android:gravity="center_vertical"
-        android:textSize="15sp"
-        android:id="@+id/tv"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="0dp"
         android:layout_weight="1"
-        android:layout_height="match_parent"
-        tools:text="Naresh kumar\nNaresh kumar\nNaresh kumar"
-        android:textColor="@color/black"
-        android:paddingRight="4dp"/>
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="match_parent"
+            android:layout_height="67dp"
+            android:gravity="center_vertical"
+            android:paddingRight="4dp"
+            android:paddingEnd="4dp"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:maxLines="3"
+            tools:text="Naresh kumar\nNaresh kumar\nNaresh kumar" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:maxLines="1"
+            android:layout_marginEnd="4dp"
+            android:layout_marginRight="4dp"
+            tools:text="2018-03-04T09:29:00Z" />
+    </LinearLayout>
+
     <ImageView
         android:id="@+id/image"
-        tools:src="@mipmap/news_app_logo"
-        android:scaleType="fitXY"
         android:layout_width="0dp"
-        android:layout_height="80dp"
-        android:layout_weight="0.30" />
+        android:layout_height="96dp"
+        android:layout_weight="0.30"
+        android:scaleType="fitXY"
+        tools:src="@mipmap/news_app_logo" />
 </LinearLayout>

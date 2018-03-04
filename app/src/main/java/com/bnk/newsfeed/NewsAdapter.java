@@ -1,7 +1,6 @@
 package com.bnk.newsfeed;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -11,12 +10,16 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 public class NewsAdapter extends ArrayAdapter{
+    private Context context;
 
     public NewsAdapter(@NonNull Context context, @NonNull List objects) {
         super(context, 0, objects);
+        this.context=context;
     }
 
     @NonNull
@@ -34,15 +37,17 @@ public class NewsAdapter extends ArrayAdapter{
 
         ImageView imageView=listItemView.findViewById(R.id.image) ;
 
-        Bitmap bitmap=currentNews.getImgBitmap();
-        if(bitmap!=null)
-             imageView.setImageBitmap(bitmap);
-        else
-            imageView.setImageBitmap(null);
+        String imgurl=currentNews.getImgUrl();
+        if (Glide.with(context).load(imgurl).into(imageView)==null)
+            imageView.setImageResource(R.mipmap.news_app_logo);
 
-        TextView hl=listItemView.findViewById(R.id.tv);
+        TextView hl,date;
 
+        hl = listItemView.findViewById(R.id.tv);
         hl.setText(currentNews.getHeadlines());
+
+        date=listItemView.findViewById(R.id.date);
+        date.setText(currentNews.getDate());
 
         return listItemView;
     }

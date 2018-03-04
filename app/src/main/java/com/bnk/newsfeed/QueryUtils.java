@@ -1,8 +1,6 @@
 package com.bnk.newsfeed;
 
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -67,10 +65,8 @@ public final class QueryUtils
                 String webTitle=currentNews.getString("title");
                 String webUrl=currentNews.getString("url");
                 String imgUrl=currentNews.getString("urlToImage");
-
-                Bitmap bitmap=null;//downloadBitmap(imgUrl);
-
-                news.add(new NewsData(webTitle,webUrl,bitmap));
+                String date =currentNews.getString("publishedAt");
+                news.add(new NewsData(webTitle,webUrl,imgUrl,date));
             }
 
 
@@ -146,29 +142,5 @@ public final class QueryUtils
         }
         return url;
     }
-    private static Bitmap downloadBitmap(String url) {
-        HttpURLConnection urlConnection = null;
-        try {
-            URL uri = new URL(url);
-            urlConnection = (HttpURLConnection) uri.openConnection();
-            int statusCode = urlConnection.getResponseCode();
-            int x=statusCode;
-            if (statusCode != 200) {
-                return null;
-            }
 
-            InputStream inputStream = urlConnection.getInputStream();
-            if (inputStream != null) {
-                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                return bitmap;
-            }
-        } catch (Exception e) {
-            Log.w("ImageDownloader", "Error downloading image from " + url,e);
-        } finally {
-            if (urlConnection != null) {
-                urlConnection.disconnect();
-            }
-        }
-        return null;
-    }
 }
